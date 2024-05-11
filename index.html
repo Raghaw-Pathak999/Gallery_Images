@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery_Images</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: rgb(0, 0, 0);
+        }
+
+        .Gallery {
+            width: 70%;
+            display: flex;
+            overflow-x: scroll;
+            background: #a74848;
+            border-radius: 10px 100px;
+        }
+
+        .Gallery div {
+            width: 100%;
+            height: 450px;
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-gap: 25px;
+            flex: none;
+            padding: 20px;
+        }
+
+        .Gallery div img {
+            width: 250px;
+            height: 350px;
+            margin-top: 30px;
+            border-radius: 10px;
+            filter: grayscale(70%);
+            transition: all 0.3s ease;
+        }
+
+        .Gallery::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery_warp {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 7% auto;
+        }
+
+        .back_btn {
+            margin: 20px;
+            cursor: pointer;
+            width: 65px;
+            filter: drop-shadow(5px 5px 3px #878787);
+            opacity: 0.8;
+        }
+
+        .next_btn {
+            margin: 20px;
+            cursor: pointer;
+            width: 65px;
+            filter: drop-shadow(-5px 5px 3px #636363);
+            opacity: 0.8;
+        }
+
+        .back_btn:hover {
+            opacity: 1;
+            scale: 1.07;
+        }
+
+        .next_btn:hover {
+            opacity: 1;
+            scale: 1.07;
+        }
+
+        .Gallery div img:hover {
+            filter: grayscale(0);
+            cursor: pointer;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gallery_warp">
+        <img class="back_btn" src="./icons8-back-64.png">
+        <div class="Gallery">
+            <div>
+                <span><img src="https://i.pinimg.com/564x/24/05/c9/2405c9e506f4008c181d195bf6c1b1a3.jpg"></span>
+                <span><img src="https://i.pinimg.com/736x/10/cc/a6/10cca6a3e761d511c01f91ff046f5ca1.jpg"></span>
+                <span><img src="https://i.pinimg.com/564x/55/8d/41/558d411c0368ae518b6f6c628df88c4e.jpg"></span>
+            </div>
+            <div>
+                <span><img src="https://i.pinimg.com/736x/b7/d5/ab/b7d5abc6b14025de21241c21eb5818f2.jpg"></span>
+                <span><img src="https://i.pinimg.com/564x/9a/c6/6b/9ac66bbc84ebd8afc1d4498557edf21c.jpg"></span>
+                <span><img src="https://i.pinimg.com/564x/3e/dc/67/3edc67220a1ba3f97750ef6b5e93f3bc.jpg"></span>
+            </div>
+
+            <div>
+                <span><img src="https://i.pinimg.com/564x/ef/4f/2c/ef4f2cf22235d53538d78d37d059ba1a.jpg"></span>
+                <span><img src="https://i.pinimg.com/564x/85/bc/21/85bc21c07f0a0d9e999ab334947694f1.jpg"></span>
+                <span><img src="https://i.pinimg.com/564x/11/13/03/1113030e7c6d3765b5b0d1bc7d677811.jpg"></span>
+            </div>
+        </div>
+        <img class="next_btn" src="./icons8-next-page-64.png">
+    </div>
+</body>
+<script>
+    let scrollContainer = document.querySelector('.Gallery');
+    let backBtn = document.querySelector(".back_btn");
+    let nextBtn = document.querySelector(".next_btn");
+
+    scrollContainer.addEventListener("wheel", (event) => {
+        event.preventDefault()
+        scrollContainer.style.scrollBehavior = "auto"
+        scrollContainer.scrollLeft += event.deltaY
+    });
+
+    backBtn.addEventListener("click", () => {
+        scrollContainer.style.scrollBehavior = "smooth"
+        scrollContainer.scrollLeft -= 950
+    });
+
+    nextBtn.addEventListener("click", () => {
+        scrollContainer.style.scrollBehavior = "smooth"
+        scrollContainer.scrollLeft += 950
+    });
+
+</script>
+
+</html>
